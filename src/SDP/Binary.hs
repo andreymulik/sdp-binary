@@ -43,15 +43,15 @@ instance (Binary e, Unboxed e) => Binary (SBytes# e)
     get = do n <- get; es <- getMany (max 0 n); return (fromListN n es)
     put = putList . listL
 
-instance (Binary (rep e)) => Binary (AnyChunks rep e)
+instance (Nullable (rep e), Binary (rep e)) => Binary (AnyChunks rep e)
   where
-    get = AnyChunks <$> (getMany =<< get)
-    put = \ (AnyChunks cs) -> do put (sizeOf cs); putList cs
+    put = \ es -> let cs = toChunks es in do put (sizeOf cs); putList cs
+    get = fromChunks <$> (getMany =<< get)
 
 instance (Binary i, Index i, Binary (rep e)) => Binary (AnyBorder rep i e)
   where
-    get = liftA3 AnyBorder get get get
     put = \ (AnyBorder l u es) -> do put l; put u; put es
+    get = liftA3 AnyBorder get get get
 
 --------------------------------------------------------------------------------
 
