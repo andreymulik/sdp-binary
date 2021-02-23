@@ -36,7 +36,7 @@ Library
     sdp          >= 0.2  && < 1,
     binary       >= 0.8  && < 1
   
-  ghc-options: -O2 -Wall -Wno-orphans
+  ghc-options: -Wall -Wno-orphans -Wcompat
   
   exposed-modules:
     SDP.Binary
