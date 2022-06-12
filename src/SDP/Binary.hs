@@ -2,7 +2,7 @@
 
 {- |
     Module      :  SDP.Binary
-    Copyright   :  (c) Andrey Mulik 2020
+    Copyright   :  (c) Andrey Mulik 2020-2022
     License     :  BSD-style
     Maintainer  :  work.a.mulik@gmail.com
     Portability :  portable

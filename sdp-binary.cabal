@@ -1,5 +1,5 @@
 name:          sdp-binary
-version:       0.2
+version:       0.2.0.1
 category:      Data Structures
 
 synopsis:      Binary instances for SDP
@@ -14,9 +14,11 @@ license-file:  LICENSE
 license:       BSD3
 
 build-type:    Simple
-cabal-version: >=1.10
+cabal-version: >= 1.10
 
 tested-with:
+  -- lts-7.0
+  GHC == 8.0.1,
   -- lts-7.24
   GHC == 8.0.1,
   -- lts-9.21
@@ -26,7 +28,12 @@ tested-with:
   -- lts-12.26
   GHC == 8.4.4,
   -- lts-18.8
-  GHC == 8.10.6
+  GHC == 8.10.6,
+  -- lts-19.11
+  GHC == 9.0.2,
+  
+  -- nightly-2022-06-12
+  GHC == 9.2.3
 
 source-repository head
   type: git
@@ -41,6 +48,7 @@ source-repository head
 
 Library
   default-language: Haskell2010
+  exposed-modules: SDP.Binary
   hs-source-dirs:   src
   
   build-depends:
@@ -49,7 +57,4 @@ Library
     binary       >= 0.8 && < 1
   
   ghc-options: -Wall -Wno-orphans -Wcompat
-  
-  exposed-modules:
-    SDP.Binary
 
